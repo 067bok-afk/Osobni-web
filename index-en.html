@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bořek Kulhánek - AI & Business Projects Expert</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #0f1115; color: white; overflow-x: hidden; }
+        .content-wrapper { max-width: 1600px; margin: 0 auto; padding: 0 1rem; }
+        @media (min-width: 640px) { .content-wrapper { padding: 0 1.5rem; } }
+        @media (min-width: 1024px) { .content-wrapper { padding: 0 2rem; } }
+        .text-accent { color: #00f2ff; }
+        .bg-accent { background-color: #00f2ff; }
+        .border-accent { border-color: #00f2ff; }
+        html { scroll-behavior: smooth; }
+        .section-heading-hidden { display: none; }
+        #ai-chat-container { position: fixed; bottom: 0.75rem; right: 0.75rem; z-index: 9999; }
+        @media (min-width: 640px) { #ai-chat-container { bottom: 1.5rem; right: 1.5rem; } }
+        #ai-chat-window { transition: width 0.3s ease, height 0.3s ease; }
+        img { max-width: 100%; height: auto; }
+        #hero-image { object-fit: cover; object-position: center; }
+        .ai-choice-btn:active { transform: scale(0.97); }
+        @media (hover: none) { .ai-choice-btn { border-color: #4b5563; } .group:active .ai-choice-btn { border-color: #00f2ff; color: #00f2ff; } }
+        @keyframes mic-pulse { 0%, 100% { transform: scale(1); opacity: 0.7; } 50% { transform: scale(1.12); opacity: 1; } }
+        .mic-speaking { animation: mic-pulse 0.7s ease-in-out infinite; }
+        .comic-bubble { position: relative; padding: 0.75rem 1.25rem; background: rgba(0,242,255,0.15); border: 2px solid rgba(0,242,255,0.5); border-radius: 1rem; font-size: 1.5rem; color: #00f2ff; min-width: 4rem; text-align: center; }
+        .comic-bubble::before { content: ''; position: absolute; top: -8px; left: 50%; transform: translateX(-50%); border: 8px solid transparent; border-bottom-color: rgba(0,242,255,0.5); }
+    </style>
+</head>
+<body class="antialiased">
+
+    <nav class="w-full border-b border-gray-800">
+        <div class="content-wrapper py-6 flex justify-between items-center">
+            <div class="text-xl font-bold tracking-tight">Bořek Kulhánek</div>
+            <div class="hidden md:flex space-x-8 text-sm uppercase tracking-widest text-gray-400">
+                <a href="#specializace" class="hover:text-white transition">Expertise</a>
+                <a href="#dovednosti" class="hover:text-white transition">Tools</a>
+                <a href="#kariera" class="hover:text-white transition">Career</a>
+                <a href="#o-mne" class="hover:text-white transition">About</a>
+                <a href="#kontakt" class="hover:text-white transition">Contact</a>
+            </div>
+            <div class="flex space-x-3 items-center">
+                <a href="/" class="text-sm font-medium px-2 py-1 rounded text-gray-400 border border-gray-600 hover:border-gray-500 hover:text-white transition" title="Česky">CZ</a>
+                <a href="/en" class="text-sm font-medium px-2 py-1 rounded text-accent border border-accent hover:bg-accent hover:text-black transition" title="English">EN</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="w-full relative min-h-[80vh] flex items-center overflow-hidden">
+        <div class="content-wrapper w-full z-10">
+            <div class="md:w-1/2 text-left py-12">
+                <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight mb-4">
+                    B2B Partner in the AI Era
+                </h1>
+                <p class="text-base text-gray-300 mb-6 max-w-lg">
+                    I draw on 20 years of experience in complex sales using cutting-edge tools. I believe technology is rapidly transforming business today, and the key to success is to fully master it to multiply efficiency. Modern tools are not here to replace the salesperson, but to enhance their capabilities and ensure growth in a world where commerce is evolving dramatically and fast.
+                </p>
+                <a href="#specializace" class="inline-block bg-accent text-black px-6 py-3 font-bold rounded-sm hover:bg-cyan-400 transition uppercase tracking-widest text-xs">
+                    Learn more
+                </a>
+            </div>
+        </div>
+
+        <div class="absolute top-0 right-0 w-full md:w-1/2 h-full z-0">
+            <div class="h-full w-full grayscale hover:grayscale-0 transition duration-700 ease-in-out">
+                <img id="hero-image" src="Borek.png" alt="Bořek Kulhánek" class="w-full h-full object-cover object-center shadow-2xl">
+                <div class="absolute inset-0 bg-gradient-to-r from-[#0f1115] via-transparent to-transparent md:hidden"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="specializace" class="w-full py-12 bg-[#16191e]">
+        <div class="content-wrapper">
+            <h2 class="text-3xl font-bold mb-8 border-l-4 border-accent pl-6">Expertise</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="p-6 bg-[#1f232a] rounded-lg">
+                    <h3 class="font-bold text-accent mb-4">Strategic B2B Account Management</h3>
+                    <p class="text-gray-400 text-sm">My goal is not just to manage contacts, but to build real and lasting partnerships. I dive deep into the client's business to understand their challenges and goals. This allows me to act as a strategic advisor, helping them find new paths.</p>
+                </div>
+                <div class="p-6 bg-[#1f232a] rounded-lg">
+                    <h3 class="font-bold text-accent mb-4">Business Development & Acquisition</h3>
+                    <p class="text-gray-400 text-sm">I actively seek, approach, and build relationships with new clients and partners. My domain is identifying hidden potential, especially in dynamic markets, where I turn initial contact into solid and sustainable business relationships.</p>
+                </div>
+                <div class="p-6 bg-[#1f232a] rounded-lg">
+                    <h3 class="font-bold text-accent mb-4">Consultative Sales & Custom Solutions</h3>
+                    <p class="text-gray-400 text-sm">I believe the best solutions come from listening, not just presenting. My approach is to first thoroughly understand the client's specific needs and technical challenges. Based on this analysis, I propose tailored solutions that align with their goals.</p>
+                </div>
+                <div class="p-6 bg-[#1f232a] rounded-lg">
+                    <h3 class="font-bold text-accent mb-4">Project Management with Technical Reach</h3>
+                    <p class="text-gray-400 text-sm">A great idea gains value only when it is successfully implemented. I manage projects from initial concept to final launch and ensure that the business vision is accurately translated into a functional technical solution. This website and the avatar you interact with are a practical demonstration.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="dovednosti" class="w-full py-12 bg-[#16191e]">
+        <div class="content-wrapper">
+            <h2 class="text-3xl font-bold mb-8 border-l-4 border-accent pl-6">Tools</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                <div class="p-4 bg-[#1f232a] rounded-lg border border-gray-800">
+                    <div class="flex items-center gap-3 mb-3">
+                        <img src="https://cdn.simpleicons.org/python/00f2ff" class="w-6 h-6 flex-shrink-0 object-contain" alt="Python">
+                        <h3 class="font-bold text-lg text-accent">Python & AI</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">With the advent of artificial intelligence, I feel the visions I knew from sci-fi are becoming reality. This led me to tools like Python and Cursor and a strong desire to understand not just the basics, but the entire ecosystem that exists so far. My goal is not to become a programmer, but to have deep insight that is key in business. It also opens up opportunities for me to have meaningful discussions and understand the limits and possibilities of AI.</p>
+                </div>
+                <div class="p-4 bg-[#1f232a] rounded-lg border border-gray-800">
+                    <div class="flex items-center gap-3 mb-3">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/4/40/Adobe_Premiere_Pro_CC_icon.svg" class="w-6 h-6 flex-shrink-0 object-contain" alt="Premiere Pro">
+                        <h3 class="font-bold text-lg text-accent">Premiere Pro & Video</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">People read less and less today, so video is a powerful language of marketing and business. Video can now answer many questions for thousands of customers at once. My experience with Premiere Pro gives me the ability and insight into what it takes to create visually compelling content. This allows me to collaborate better with marketing teams and understand the complexity of videos.</p>
+                </div>
+                <div class="p-4 bg-[#1f232a] rounded-lg border border-gray-800">
+                    <div class="flex items-center gap-3 mb-3">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/a/af/Adobe_Photoshop_CC_icon.svg" class="w-6 h-6 flex-shrink-0 object-contain" alt="Photoshop">
+                        <h3 class="font-bold text-lg text-accent">Photoshop & Graphics</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">Every successful company has a strong visual identity. Knowledge of Photoshop basics gives me the means to create content or compelling presentations. This skill and program fundamentals mean I can have informed discussions with designers and marketers. Speak their language.</p>
+                </div>
+                <div class="p-4 bg-[#1f232a] rounded-lg border border-gray-800">
+                    <div class="flex items-center gap-3 mb-3">
+                        <img src="/static/icons/english.png" class="w-9 h-9 flex-shrink-0 object-contain" alt="English">
+                        <h3 class="font-bold text-lg text-accent">English</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">English is my natural working language. I use it daily for communication with international clients, conducting business negotiations, and accurately identifying their needs across different markets.</p>
+                </div>
+            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-4 lg:grid-cols-7 gap-2">
+                <div class="px-2 py-2 bg-[#1f232a] rounded border border-gray-800 flex items-center gap-2 min-w-0">
+                    <img src="/static/icons/world.png" class="w-16 h-16 flex-shrink-0 object-contain" alt="World">
+                    <span class="font-medium text-xs text-white truncate">World</span>
+                </div>
+                <div class="px-2 py-2 bg-[#1f232a] rounded border border-gray-800 flex items-center gap-2 min-w-0">
+                    <img src="/static/icons/adobe.png" class="w-16 h-16 flex-shrink-0 object-contain" alt="Adobe">
+                    <span class="font-medium text-xs text-white truncate">Adobe</span>
+                </div>
+                <div class="px-2 py-2 bg-[#1f232a] rounded border border-gray-800 flex items-center gap-2 min-w-0">
+                    <img src="/static/icons/email.png" class="w-16 h-16 flex-shrink-0 object-contain" alt="Email">
+                    <span class="font-medium text-xs text-white truncate">Email</span>
+                </div>
+                <div class="px-2 py-2 bg-[#1f232a] rounded border border-gray-800 flex items-center gap-2 min-w-0">
+                    <img src="/static/icons/google.png" class="w-16 h-16 flex-shrink-0 object-contain" alt="Google">
+                    <span class="font-medium text-xs text-white truncate">Google</span>
+                </div>
+                <div class="px-2 py-2 bg-[#1f232a] rounded border border-gray-800 flex items-center gap-2 min-w-0">
+                    <img src="/static/icons/excel.png" class="w-16 h-16 flex-shrink-0 object-contain" alt="Excel">
+                    <span class="font-medium text-xs text-white truncate">Excel</span>
+                </div>
+                <div class="px-2 py-2 bg-[#1f232a] rounded border border-gray-800 flex items-center gap-2 min-w-0">
+                    <img src="/static/icons/powerpoint.png" class="w-16 h-16 flex-shrink-0 object-contain" alt="PowerPoint">
+                    <span class="font-medium text-xs text-white truncate">PowerPoint</span>
+                </div>
+                <div class="px-2 py-2 bg-[#1f232a] rounded border border-gray-800 flex items-center gap-2 min-w-0">
+                    <img src="/static/icons/teams.png" class="w-16 h-16 flex-shrink-0 object-contain" alt="Teams">
+                    <span class="font-medium text-xs text-white truncate">Teams</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="kariera" class="w-full py-12 bg-[#16191e]">
+        <div class="content-wrapper">
+            <h2 class="text-3xl font-bold mb-8 border-l-4 border-accent pl-6">Career</h2>
+            <div class="space-y-6">
+                <div class="border-b border-gray-800 pb-6 grid md:grid-cols-3 gap-6">
+                    <div class="text-xl font-bold">OneCircle</div>
+                    <div class="md:col-span-2 space-y-2">
+                        <p><strong class="text-accent">Position:</strong> Account Manager for Eastern Europe</p>
+                        <p><strong class="text-accent">Description:</strong> Responsibility for the Eastern European market. My role included acquiring new customers, technical support for existing partners, reporting, and identifying strategic growth opportunities.</p>
+                        <p><strong class="text-white">Period:</strong> 2024 - 2025</p>
+                    </div>
+                </div>
+                <div class="border-b border-gray-800 pb-6 grid md:grid-cols-3 gap-6">
+                    <div class="text-xl font-bold">Novum Global, a.s.</div>
+                    <div class="md:col-span-2 space-y-2">
+                        <p><strong class="text-accent">Position:</strong> Account Manager & Project Designer</p>
+                        <p><strong class="text-accent">Description:</strong> Specialization in consulting and solution design in industrial weighing. I was responsible for developing sales of RAVAS mobile weighing systems, including technical designs and integration with customer ERP/CRM systems.</p>
+                        <p><strong class="text-white">Period:</strong> 2018 - 2023</p>
+                    </div>
+                </div>
+                <div class="border-b border-gray-800 pb-6 grid md:grid-cols-3 gap-6">
+                    <div class="text-xl font-bold">Aira GROUP</div>
+                    <div class="md:col-span-2 space-y-2">
+                        <p><strong class="text-accent">Position:</strong> Account Manager</p>
+                        <p><strong class="text-accent">Description:</strong> My role involved consulting with clients and finding strategic opportunities for their growth, whether through online marketing, brand building, or custom software development (ERP/CRM). I also ensured complete coordination of project teams.</p>
+                        <p><strong class="text-white">Period:</strong> 2017 - 2018</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="o-mne" class="w-full py-24">
+        <div class="content-wrapper">
+            <h2 class="text-3xl font-bold mb-16 border-l-4 border-accent pl-6">About me</h2>
+            <div class="max-w-3xl text-gray-300 space-y-6">
+                <h3 class="text-2xl font-bold text-white">My Story: Bridging Technology and Business</h3>
+                <p>My professional path connects two worlds: technology and business. It started with a fascination for sci-fi and building my own computers. It has always been key for me to understand systems in depth – not to become an expert, but to create a tool that serves me perfectly.</p>
+                <p>This passion paradoxically led me not to programming, but to business. With over ten years of experience leading complex B2B projects, I have personally experienced how the rules of the game have changed. Today, a great product is not enough; in an era when clients have unlimited access to information, the role of the salesperson has shifted from presenter to detective. My task is to listen, uncover hidden needs, and find solutions that truly work.</p>
+
+                <h3 class="text-xl font-bold text-accent mt-10 mb-3">Bridge Between Business and Technology</h3>
+                <p>I believe real value today is created at the intersection of different fields. That's why I actively seek insight into areas that traditionally don't belong in an Account Manager's portfolio:</p>
+                <ul class="list-disc list-inside space-y-2 ml-2">
+                    <li><strong class="text-white">I gain insight into AI and code.</strong> With tools like Cursor, I'm not just trying to peek under the hood of technology, but to understand the complex world of AI. The best way is to engage with AI and create – not with the goal of becoming a programmer, but as a businessperson to have deep technical knowledge that allows me to optimize solutions between development and the customer.</li>
+                    <li><strong class="text-white">I have an overview of marketing and design.</strong> Thanks to several years in marketing companies and practical experience with tools like Premiere Pro, Photoshop, and Google, I have a comprehensive understanding of PPC, SEO, and other key factors. In my view, it's not enough to be just a salesperson with a phone, but also with a website.</li>
+                </ul>
+
+                <h3 class="text-xl font-bold text-accent mt-10 mb-3">My Vision: AI as an Amplifier of Human Potential</h3>
+                <p>When artificial intelligence entered the scene, all the pieces of my puzzle fell perfectly into place. My passion for functional systems connected with a deep understanding of business. I don't see AI as a replacement for humans, but as their best assistant. It's a tool with the power to eliminate repetitive burden – data work, reporting, routine tasks – and free our hands for what we're irreplaceable in: creativity, strategic thinking, and building solid relationships with customers.</p>
+                <p>My goal is to lead projects that generate measurable profit for companies through smart and strategic integration of technology. I want to build systems that truly help people and allow them to focus on the core of their work.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="kontakt" class="w-full py-24 bg-accent text-black">
+        <div class="content-wrapper text-center">
+            <h2 class="text-4xl font-bold mb-6">Let's connect</h2>
+            <p class="text-xl mb-12 max-w-2xl mx-auto">Interested in collaboration or just want to chat about how technology can move your business forward?</p>
+            <div class="flex flex-wrap justify-center gap-6">
+                <a href="#" class="bg-black text-white px-8 py-4 font-bold rounded-sm hover:bg-gray-800 transition">Download CV (PDF)</a>
+                <a href="https://www.linkedin.com/in/borekkuhanek/" target="_blank" class="border-2 border-black px-8 py-4 font-bold rounded-sm hover:bg-black hover:text-white transition">LinkedIn Profile</a>
+            </div>
+            <div class="mt-12 font-mono text-lg">
+                067bok@gmail.com | 776 629 221
+            </div>
+        </div>
+    </section>
+
+    <footer class="w-full py-8 border-t border-gray-800">
+        <div class="content-wrapper text-center text-gray-500 text-sm">
+            &copy; 2026 Bořek Kulhánek. Created in collaboration with CLIO 3.3.
+        </div>
+    </footer>
+
+    <!-- AI Chat -->
+    <div id="ai-chat-container">
+        <div id="ai-chat-window" class="flex flex-col rounded-xl bg-[#1f232a] border border-gray-700 shadow-2xl overflow-hidden">
+            <div id="ai-chat-toggle" class="ai-chat-collapsed w-28 sm:w-36 md:w-44 flex flex-col items-center gap-1 sm:gap-2 p-1 sm:p-2 cursor-pointer hover:bg-[#2a2f38] transition rounded-lg" aria-label="Open AI assistant">
+                <img src="/static/avatar.png" alt="AI Avatar" class="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 object-contain object-center grayscale opacity-80">
+                <span class="text-xs sm:text-sm font-medium text-gray-400 text-center leading-tight">Ask me</span>
+            </div>
+
+            <div id="ai-chat-expanded" class="ai-chat-expanded hidden w-[calc(100vw-1.5rem)] max-w-[400px] h-[85vh] max-h-[600px] sm:w-[400px] sm:h-[600px] flex-col">
+                <div class="flex items-center justify-between px-4 py-3 border-b border-gray-700 bg-[#16191e]">
+                    <div class="flex items-center gap-2">
+                        <button type="button" id="ai-chat-back" class="hidden p-1 rounded hover:bg-gray-700 text-gray-400 hover:text-white transition" aria-label="Back to voice">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+                        </button>
+                        <span class="font-bold text-accent">AI Avatar</span>
+                    </div>
+                    <button type="button" id="ai-chat-close" class="p-1 rounded hover:bg-gray-700 text-gray-400 hover:text-white transition" aria-label="Close">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+                    </button>
+                </div>
+
+                <div id="ai-chat-v1" class="flex-1 flex flex-col min-h-0">
+                    <div id="ai-chat-v1-choice" class="flex-1 flex flex-col items-center justify-center p-4 sm:p-6 gap-4 sm:gap-6">
+                        <img src="/static/avatar.png" alt="AI Avatar" class="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 object-contain object-center">
+                        <div class="flex items-center gap-6 sm:gap-8">
+                            <div class="flex flex-col items-center gap-2 group cursor-pointer" id="ai-choice-call-wrap" title="Call my AI!">
+                                <button type="button" id="ai-chat-call" class="ai-choice-btn w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full bg-[#2a2f38] border-2 border-gray-600 text-gray-500 flex items-center justify-center transition-all duration-200 group-hover:border-accent group-hover:text-accent group-hover:bg-accent/10" aria-label="Call my AI!">
+                                    <svg class="w-8 h-8 sm:w-10 sm:h-10" fill="currentColor" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                                </button>
+                                <span class="text-xs text-gray-500 group-hover:text-accent transition-colors">Call</span>
+                            </div>
+                            <div class="flex flex-col items-center gap-2 group cursor-pointer" id="ai-choice-text-wrap" title="Write to my AI!">
+                                <button type="button" id="ai-chat-to-text" class="ai-choice-btn w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-lg bg-[#2a2f38] border-2 border-gray-600 text-gray-500 flex items-center justify-center transition-all duration-200 group-hover:border-accent group-hover:text-accent group-hover:bg-accent/10" aria-label="Write to my AI!">
+                                    <svg class="w-8 h-8 sm:w-10 sm:h-10" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+                                </button>
+                                <span class="text-xs text-gray-500 group-hover:text-accent transition-colors">Write</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="ai-chat-v1-call" class="hidden flex-1 flex flex-col p-4 sm:p-6 min-h-0">
+                        <div class="flex-1 flex flex-col items-center justify-center gap-6 min-h-0">
+                            <img src="/static/avatar.png" alt="AI Avatar" class="w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 object-contain object-center flex-shrink-0">
+                            <div id="ai-call-status" class="flex flex-col items-center justify-center gap-2 min-h-[5rem]"></div>
+                        </div>
+                        <button type="button" id="ai-chat-end-call" class="w-full py-2 rounded-lg bg-red-500/20 text-red-400 border border-red-500/50 hover:bg-red-500/30 transition text-sm font-medium" aria-label="End call">End call</button>
+                    </div>
+                </div>
+
+                <div id="ai-chat-v2" class="hidden flex-1 flex flex-col min-h-0">
+                    <div id="ai-chat-messages" class="flex-1 overflow-y-auto p-4 space-y-4 min-h-0">
+                        <div class="text-sm text-gray-400 text-center py-8">
+                            Hi! I'm AI Avatar. You can type here. How can I help?
+                        </div>
+                    </div>
+                    <div class="p-3 border-t border-gray-700 bg-[#16191e]">
+                        <div class="flex gap-2 items-center">
+                            <input type="text" id="ai-chat-input" placeholder="Type a message..." class="flex-1 px-4 py-2 rounded-lg bg-[#1f232a] border border-gray-700 text-white text-sm placeholder-gray-500 focus:outline-none focus:border-accent disabled:opacity-50 disabled:cursor-not-allowed" maxlength="2000">
+                            <button type="button" id="ai-chat-stop" class="hidden w-10 h-10 rounded-full bg-red-500 hover:bg-red-600 flex items-center justify-center text-white flex-shrink-0" aria-label="Stop" title="Stop playback">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12"/></svg>
+                            </button>
+                            <button type="button" id="ai-chat-send" class="p-2 rounded-lg bg-accent text-black hover:bg-cyan-400 transition disabled:opacity-50 disabled:cursor-not-allowed" aria-label="Send">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            const API_BASE = '';
+            const PAGE_LANG = 'en';
+            const LANG = 'en';
+            const isSecure = location.protocol === 'https:' || location.hostname === 'localhost' || location.hostname === '127.0.0.1';
+            let sessionId = null;
+            let currentAudio = null;
+            let callActive = false;
+            let isAISpeaking = false;
+            let recognition = null;
+            let collectedTexts = [];
+            let silenceTimeout = null;
+            let userRequestedStop = false;
+
+            function debugLog(msg, data) {
+                const ts = new Date().toLocaleTimeString();
+                const line = data !== undefined ? `${ts} ${msg} ${typeof data === 'object' ? JSON.stringify(data) : data}` : `${ts} ${msg}`;
+                console.log('[AI Avatar]', line);
+                const el = document.getElementById('ai-debug-log');
+                if (el) { el.textContent += line + '\n'; el.scrollTop = el.scrollHeight; }
+            }
+
+            const toggle = document.getElementById('ai-chat-toggle');
+            const expanded = document.getElementById('ai-chat-expanded');
+            const closeBtn = document.getElementById('ai-chat-close');
+            const v1View = document.getElementById('ai-chat-v1');
+            const v1Choice = document.getElementById('ai-chat-v1-choice');
+            const v1Call = document.getElementById('ai-chat-v1-call');
+            const v2View = document.getElementById('ai-chat-v2');
+            const callBtn = document.getElementById('ai-chat-call');
+            const toTextBtn = document.getElementById('ai-chat-to-text');
+            const backBtn = document.getElementById('ai-chat-back');
+            const endCallBtn = document.getElementById('ai-chat-end-call');
+            const input = document.getElementById('ai-chat-input');
+            const sendBtn = document.getElementById('ai-chat-send');
+            const stopBtn = document.getElementById('ai-chat-stop');
+            const messages = document.getElementById('ai-chat-messages');
+            const callStatusEl = document.getElementById('ai-call-status');
+
+            function openChat() {
+                toggle.classList.add('hidden');
+                expanded.classList.remove('hidden');
+                expanded.classList.add('flex');
+                v1View.classList.remove('hidden');
+                v1View.classList.add('flex');
+                v1Choice.classList.remove('hidden');
+                v1Choice.classList.add('flex');
+                v1Call.classList.add('hidden');
+                v1Call.classList.remove('flex');
+                v2View.classList.add('hidden');
+                v2View.classList.remove('flex');
+                backBtn.classList.add('hidden');
+            }
+
+            function closeChat() {
+                expanded.classList.add('hidden');
+                expanded.classList.remove('flex');
+                toggle.classList.remove('hidden');
+                userRequestedStop = true;
+                clearTimeout(silenceTimeout);
+                if (currentAudio) { currentAudio.pause(); currentAudio = null; }
+                if (window.speechSynthesis) speechSynthesis.cancel();
+                if (recognition) try { recognition.stop(); } catch (_) {}
+                callActive = false;
+                showCallChoice();
+            }
+
+            function showCallView() {
+                v1Choice.classList.add('hidden');
+                v1Choice.classList.remove('flex');
+                v1Call.classList.remove('hidden');
+                v1Call.classList.add('flex');
+                callActive = true;
+            }
+
+            function showCallChoice() {
+                v1Call.classList.add('hidden');
+                v1Call.classList.remove('flex');
+                v1Choice.classList.remove('hidden');
+                v1Choice.classList.add('flex');
+                callActive = false;
+                if (dotsInterval) { clearInterval(dotsInterval); dotsInterval = null; }
+            }
+
+            let currentCallState = 'user_speaking';
+            let dotsInterval = null;
+            function setUserSpeakingInCall(speaking) {
+                if (currentCallState !== 'user_speaking') return;
+                const mic = document.getElementById('ai-call-mic');
+                if (mic) mic.classList.toggle('mic-speaking', speaking);
+            }
+
+            function updateCallStatus(state, customText, isUserSpeaking) {
+                if (!callStatusEl) return;
+                currentCallState = state;
+                if (dotsInterval) { clearInterval(dotsInterval); dotsInterval = null; }
+                if (state === 'thinking') {
+                    callStatusEl.innerHTML = '<div class="flex items-center gap-2"><svg class="w-8 h-8 text-amber-400 animate-pulse flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z"/></svg><span class="text-sm text-amber-400">Processing</span></div>';
+                } else if (state === 'ai_speaking') {
+                    const bubble = document.createElement('div');
+                    bubble.className = 'comic-bubble';
+                    bubble.id = 'ai-comic-dots';
+                    bubble.textContent = '.';
+                    callStatusEl.innerHTML = '';
+                    callStatusEl.appendChild(bubble);
+                    let d = 0;
+                    dotsInterval = setInterval(() => {
+                        const el = document.getElementById('ai-comic-dots');
+                        if (!el || !callStatusEl.contains(el)) { clearInterval(dotsInterval); return; }
+                        d = (d + 1) % 4;
+                        el.textContent = '.'.repeat(d || 3);
+                    }, 350);
+                } else if (state === 'custom' && customText) {
+                    callStatusEl.innerHTML = '<div class="flex flex-col items-center gap-2"><div class="w-16 h-16 rounded-full bg-gray-600/50 flex items-center justify-center"><svg class="w-8 h-8 text-gray-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"/><path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/></svg></div><span class="text-sm text-gray-400 text-center">' + customText + '</span></div>';
+                } else {
+                    const micClass = isUserSpeaking ? 'mic-speaking' : '';
+                    callStatusEl.innerHTML = '<div class="flex flex-col items-center gap-2"><div id="ai-call-mic" class="w-16 h-16 rounded-full bg-accent/20 border-2 border-accent flex items-center justify-center ' + micClass + '"><svg class="w-8 h-8 text-accent" fill="currentColor" viewBox="0 0 24 24"><path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"/><path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/></svg></div><span class="text-sm text-gray-400 text-center">Speak – your message will be sent after a short pause. Your turn.</span></div>';
+                }
+            }
+
+            function setInputsEnabled(enabled) {
+                isAISpeaking = !enabled;
+                input.disabled = !enabled;
+                sendBtn.disabled = !enabled;
+                stopBtn.classList.toggle('hidden', enabled);
+            }
+
+            function addMessage(text, isUser, audioAvailable = false) {
+                const welcome = messages.querySelector('.text-center');
+                if (welcome) welcome.remove();
+                const div = document.createElement('div');
+                div.className = 'flex flex-col ' + (isUser ? 'items-end' : 'items-start');
+                const bubble = document.createElement('div');
+                bubble.className = 'max-w-[85%] px-4 py-2 rounded-lg text-sm ' + (isUser ? 'bg-accent text-black' : 'bg-[#2a2f38] text-gray-200');
+                bubble.textContent = text;
+                div.appendChild(bubble);
+                if (!isUser && audioAvailable) {
+                    const playBtn = document.createElement('button');
+                    playBtn.className = 'mt-1 text-xs text-accent hover:underline';
+                    playBtn.textContent = '▶ Play voice';
+                    const isUnsupported = text === 'I am sorry, can you please speak in Czech or English?';
+                    playBtn.onclick = () => isUnsupported ? playUnsupportedLangAudio() : playAudio(text);
+                    div.appendChild(playBtn);
+                }
+                messages.appendChild(div);
+                messages.scrollTop = messages.scrollHeight;
+            }
+
+            function addLoading() {
+                const welcome = messages.querySelector('.text-center');
+                if (welcome) welcome.remove();
+                const div = document.createElement('div');
+                div.id = 'ai-loading';
+                div.className = 'flex justify-start';
+                div.innerHTML = '<div class="px-4 py-2 rounded-lg text-sm bg-[#2a2f38] text-gray-400">Thinking...</div>';
+                messages.appendChild(div);
+                messages.scrollTop = messages.scrollHeight;
+            }
+
+            function removeLoading() {
+                const el = document.getElementById('ai-loading');
+                if (el) el.remove();
+            }
+
+            function speakWithBrowser(text) {
+                if (!window.speechSynthesis || !text?.trim()) { startVoiceSession(); return; }
+                speechSynthesis.cancel();
+                updateCallStatus('ai_speaking');
+                setInputsEnabled(false);
+                const u = new SpeechSynthesisUtterance(text.trim());
+                u.lang = LANG === 'en' ? 'en-US' : 'cs-CZ';
+                u.rate = 0.95;
+                u.volume = 1;
+                u.onend = () => { updateCallStatus('user_speaking'); setInputsEnabled(true); startVoiceSession(); };
+                u.onerror = () => { updateCallStatus('user_speaking'); setInputsEnabled(true); startVoiceSession(); };
+                speechSynthesis.speak(u);
+            }
+
+            async function playUnsupportedLangAudio() {
+                if (currentAudio) { currentAudio.pause(); currentAudio = null; }
+                setInputsEnabled(false);
+                const inCallView = v1Call && !v1Call.classList.contains('hidden');
+                if (inCallView) updateCallStatus('ai_speaking');
+                const inVoiceMode = v2View.classList.contains('hidden');
+                const onDone = () => {
+                    if (inCallView) updateCallStatus('user_speaking');
+                    setInputsEnabled(true);
+                    if (inVoiceMode) startVoiceSession();
+                };
+                try {
+                    const res = await fetch(API_BASE + '/api/audio/unsupported-lang');
+                    if (!res.ok) throw new Error('Audio unavailable');
+                    const blob = await res.blob();
+                    const url = URL.createObjectURL(blob);
+                    currentAudio = new Audio(url);
+                    currentAudio.onended = () => { URL.revokeObjectURL(url); onDone(); };
+                    currentAudio.onerror = () => {
+                        speakWithBrowser('I am sorry, can you please speak in Czech or English?');
+                        onDone();
+                    };
+                    await currentAudio.play();
+                } catch (err) {
+                    speakWithBrowser('I am sorry, can you please speak in Czech or English?');
+                    onDone();
+                }
+            }
+
+            async function playAudio(text) {
+                if (currentAudio) { currentAudio.pause(); currentAudio = null; }
+                setInputsEnabled(false);
+                const inCallView = v1Call && !v1Call.classList.contains('hidden');
+                if (inCallView) updateCallStatus('ai_speaking');
+                try {
+                    const res = await fetch(API_BASE + '/api/audio?text=' + encodeURIComponent(text));
+                    if (!res.ok) throw new Error('Audio unavailable');
+                    const blob = await res.blob();
+                    const url = URL.createObjectURL(blob);
+                    currentAudio = new Audio(url);
+                    currentAudio.onended = () => {
+                        URL.revokeObjectURL(url);
+                        if (inCallView) { updateCallStatus('user_speaking'); startVoiceSession(); }
+                        setInputsEnabled(true);
+                    };
+                    currentAudio.onerror = () => {
+                        if (inCallView) { updateCallStatus('user_speaking'); startVoiceSession(); }
+                        setInputsEnabled(true);
+                    };
+                    await currentAudio.play();
+                } catch (err) {
+                    if (inCallView) { updateCallStatus('user_speaking'); startVoiceSession(); }
+                    setInputsEnabled(true);
+                    alert('Could not play voice.');
+                }
+            }
+
+            async function sendMessage() {
+                const text = input.value.trim();
+                if (!text || isAISpeaking) return;
+                input.value = '';
+                setInputsEnabled(false);
+                addMessage(text, true);
+                try {
+                    addLoading();
+                    const body = { message: text, session_id: sessionId, text_only: true, page_lang: PAGE_LANG };
+                    const res = await fetch(API_BASE + '/api/chat', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(body)
+                    });
+                    const data = await res.json();
+                    sessionId = data.session_id;
+                    removeLoading();
+                    addMessage(data.response, false, false);
+                    setInputsEnabled(true);
+                } catch (err) {
+                    removeLoading();
+                    addMessage('Sorry, I\'m currently unavailable.', false);
+                    setInputsEnabled(true);
+                }
+            }
+
+            document.getElementById('ai-choice-call-wrap')?.addEventListener('click', function() { callBtn.click(); });
+            document.getElementById('ai-choice-text-wrap')?.addEventListener('click', function() { toTextBtn.click(); });
+
+            toTextBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                if (recognition && callActive) { try { recognition.stop(); } catch (_) {} showCallChoice(); }
+                v1View.classList.add('hidden'); v1View.classList.remove('flex');
+                v2View.classList.remove('hidden'); v2View.classList.add('flex');
+                backBtn.classList.remove('hidden');
+                input.focus();
+            });
+
+            backBtn.addEventListener('click', function() {
+                v2View.classList.add('hidden'); v2View.classList.remove('flex');
+                v1View.classList.remove('hidden'); v1View.classList.add('flex');
+                showCallChoice();
+                backBtn.classList.add('hidden');
+            });
+
+            endCallBtn?.addEventListener('click', function() {
+                userRequestedStop = true;
+                clearTimeout(silenceTimeout);
+                if (currentAudio) { currentAudio.pause(); currentAudio = null; }
+                if (window.speechSynthesis) speechSynthesis.cancel();
+                if (recognition) try { recognition.stop(); } catch (_) {}
+                showCallChoice();
+            });
+
+            function initSpeechRecognition() {
+                const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+                if (!SpeechRecognition) return null;
+                const rec = new SpeechRecognition();
+                rec.continuous = true;
+                rec.interimResults = true;
+                rec.lang = LANG === 'en' ? 'en-US' : 'cs-CZ';
+                return rec;
+            }
+
+            async function processVoiceInput(transcript) {
+                if (!transcript?.trim()) return;
+                const inCallView = v1Call && !v1Call.classList.contains('hidden');
+                if (!inCallView) addMessage(transcript, true);
+                setUserSpeakingInCall(false);
+                updateCallStatus('thinking');
+                let data = null;
+                try {
+                    const body = { message: transcript.trim(), session_id: sessionId, text_only: false, page_lang: PAGE_LANG };
+                    const res = await fetch(API_BASE + '/api/chat', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(body)
+                    });
+                    data = await res.json();
+                    sessionId = data.session_id;
+                    if (!inCallView) addMessage(data.response, false, data.audio_available || data.unsupported_lang_audio);
+                    if (data.unsupported_lang_audio) {
+                        await playUnsupportedLangAudio();
+                    } else if (data.audio_available) {
+                        await playAudio(data.response);
+                    } else if (data.response) {
+                        speakWithBrowser(data.response);
+                    } else {
+                        updateCallStatus('user_speaking');
+                        setInputsEnabled(true);
+                        startVoiceSession();
+                    }
+                } catch (err) {
+                    if (!inCallView) addMessage('Sorry, I\'m currently unavailable.', false);
+                    updateCallStatus('user_speaking');
+                    setInputsEnabled(true);
+                    startVoiceSession();
+                }
+            }
+
+            function startVoiceSession() {
+                if (!recognition) recognition = initSpeechRecognition();
+                if (!recognition) return;
+                collectedTexts = [];
+                userRequestedStop = false;
+                clearTimeout(silenceTimeout);
+                setInputsEnabled(false);
+                updateCallStatus('user_speaking');
+
+                recognition.onresult = (e) => {
+                    if (userRequestedStop) return;
+                    let hasInterim = false;
+                    for (let i = 0; i < e.results.length; i++) {
+                        if (e.results[i].isFinal) {
+                            collectedTexts.push(e.results[i][0].transcript);
+                        } else {
+                            hasInterim = true;
+                        }
+                    }
+                    setUserSpeakingInCall(hasInterim);
+                    clearTimeout(silenceTimeout);
+                    silenceTimeout = setTimeout(() => {
+                        const text = collectedTexts.join(' ').trim();
+                        if (text && !userRequestedStop) { recognition.stop(); processVoiceInput(text); }
+                    }, 2000);
+                };
+                recognition.onerror = (e) => {
+                    if (e.error === 'no-speech') {
+                        updateCallStatus('custom', 'Not recognized – speak again.');
+                        setTimeout(() => startVoiceSession(), 500);
+                        return;
+                    }
+                    if (e.error !== 'aborted') {
+                        setInputsEnabled(true);
+                        updateCallStatus('custom', 'Microphone error. Try again.');
+                    }
+                };
+                recognition.onend = () => {
+                    if (userRequestedStop) {
+                        userRequestedStop = false;
+                        setInputsEnabled(true);
+                    }
+                };
+                try { recognition.start(); } catch (_) {}
+            }
+
+            callBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                if (!recognition) recognition = initSpeechRecognition();
+                if (!recognition) {
+                    alert('Your browser does not support speech recognition. Try Chrome or Edge.');
+                    return;
+                }
+                showCallView();
+                updateCallStatus('user_speaking');
+                setInputsEnabled(false);
+                startVoiceSession();
+            });
+
+            stopBtn.addEventListener('click', function() {
+                if (currentAudio) { currentAudio.pause(); currentAudio = null; }
+                setInputsEnabled(true);
+            });
+
+            toggle.addEventListener('click', openChat);
+            closeBtn.addEventListener('click', closeChat);
+            sendBtn.addEventListener('click', sendMessage);
+            input.addEventListener('keydown', function(e) { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); } });
+        })();
+    </script>
+</body>
+</html>

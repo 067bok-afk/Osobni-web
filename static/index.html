@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Avatar – Bořek Kulhánek</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="app">
+        <header class="header">
+            <h1>AI Avatar</h1>
+            <p class="subtitle">Interaktivní mluvící životopis</p>
+            <p class="session-notice">Konverzace je dočasná – zavřením okna se smaže.</p>
+        </header>
+
+        <main class="chat-container">
+            <div id="messages" class="messages"></div>
+            <div class="input-area">
+                <div class="input-row">
+                    <textarea
+                        id="userInput"
+                        placeholder="Zeptejte se na cokoliv ohledně profesního profilu..."
+                        rows="2"
+                        maxlength="2000"
+                    ></textarea>
+                    <button id="sendBtn" class="btn-send" title="Odeslat">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="options">
+                    <label class="checkbox">
+                        <input type="checkbox" id="textOnly" />
+                        <span>Pouze text (bez hlasu)</span>
+                    </label>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="/static/app.js"></script>
+</body>
+</html>

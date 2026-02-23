@@ -1,0 +1,103 @@
+# Master CV – Bořek Kulhánek
+
+## Vzdělání
+
+**Česká zemědělská univerzita v Praze (ČZU)**
+- Bakalář (Bc.), Podnikání a administrativa
+- Období: 2009 – 2013
+
+**London Institute**
+- Absolvent, Jazyková škola – Angličtina
+- Období: 2008 – 2009
+
+**Obchodní akademie Kollárova**
+- Ekonomika
+- Období: 2004 – 2008
+
+---
+
+## Pracovní zkušenosti
+
+### OneCircle (dříve KeyKeg)
+**Pozice:** Account Manager Eastern Europe  
+**Období:** Červenec 2024 – Současnost
+
+- Sledování trhu a aktivní vyhledávání nových obchodních příležitostí
+- Akvizice nových zákazníků a strategický rozvoj svěřeného regionu (Východní Evropa)
+- Poskytování technické a obchodní podpory stávajícím zákazníkům
+- Příprava pravidelných reportů a prodejních prognóz pro vedení
+- Vyhledávání příležitostí pro propagaci produktů a marketingovou podporu
+
+### GWL Group
+**Pozice:** Product Manager  
+**Období:** Leden 2023 – Únor 2023
+
+### Novum Global, a.s.
+**Pozice:** Account Manager and Industrial Project Designer  
+**Období:** Květen 2017 – Prosinec 2022
+
+- Specializace na poradenství a návrh řešení v oblasti průmyslového vážení
+- Výhradní zástupce značky RAVAS pro ČR
+- Návrh a dodávka řešení pro mobilní vážení (paletové vozíky, vysokozdvižné vozíky)
+- Zákaznické úpravy: certifikace OIML III, EX, SOLAS
+- Integrace s ERP/CRM systémy zákazníků
+
+### Aira GROUP
+**Pozice:** Account Manager and Marketing Project Designer  
+**Období:** Srpen 2016 – Květen 2017
+
+- Poradenství klientům a identifikace příležitostí pro podporu jejich aktivit
+- Online marketing a vývoj software (ERP/CRM)
+- Koordinace interních týmů: SEO, PPC, copyright, programátoři
+- Koordinace externích partnerů během návrhu, vývoje a reportingu projektů
+
+### Sabris
+**Pozice:** Sales and Marketing Specialist  
+**Období:** Leden 2015 – Srpen 2016
+
+- Analýza a reporting dat z Google Analytics
+- Správa a propagace firemní prezentace na sociálních sítích a linkbuilding
+- Tvorba marketingových kampaní, propagačních materiálů a organizace eventů
+- Aktivní podpora obchodního oddělení, vyhledávání nových příležitostí a plnění obchodních a marketingových cílů
+
+### HyperMedia, a.s.
+**Pozice:** Marketing Consultant  
+**Období:** Leden 2014 – Leden 2015
+
+- Akvizice nových klientů, vyjednávání smluv a správa klientského portfolia
+- Příprava, tvorba a vyhodnocování online kampaní (PPC, CPT, brand awareness, direct mailing)
+- Poradenství a podpora klientům v oblasti Google Analytics
+- Zodpovědnost za plnění prodejního rozpočtu a pravidelný reporting
+
+### Contacc SE
+**Pozice:** Junior Team Leader (předtím Contact Center Assistant)  
+**Období:** 2013 – 2014
+
+- Vedení, motivace a hodnocení retenčního týmu
+- Implementace a ladění procesů pro retenční volání v rámci nových projektů
+- Zodpovědnost za výsledky týmu, analýzu dat a reporting projektovým manažerům
+
+---
+
+## Projekty
+
+- Návrh a integrace mobilních vážicích systémů RAVAS s ERP/CRM zákazníků (Novum Global)
+- Koordinace marketingových a vývojových projektů včetně SEO, PPC a softwaru na míru (Aira GROUP)
+- Online marketingové kampaně (PPC, Google Analytics, sociální sítě) – HyperMedia, Sabris
+
+---
+
+## Technologie a dovednosti
+
+**Obchodní a marketing:** PPC, SEO, Google Analytics, reporting, prodejní strategie, B2B obchod
+
+**Nástroje:** Python, Adobe (Premiere Pro, Photoshop), Google (Docs, Sheets, Slides), Gmail, Microsoft Teams, CRM systémy
+
+**Oblast:** ERP/CRM integrace, online marketing, analýza dat, automatizace procesů
+
+---
+
+## Jazyky
+
+- **Angličtina** – plynulá (obchodní komunikace, prezentace, mezinárodní spolupráce)
+- **Čeština** – rodilý mluvčí

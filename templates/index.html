@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="{{ t.meta.lang }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ t.seo.title if t.seo else t.meta.title }}</title>
+    <meta name="description" content="{{ t.seo.description if t.seo else t.hero.paragraph[:160] }}">
+    {% if t.seo and t.seo.keywords %}
+    <meta name="keywords" content="{{ t.seo.keywords }}">
+    {% endif %}
+
+    <!-- Canonical & hreflang -->
+    <link rel="canonical" href="{{ base_url }}{{ '/' if lang == 'cs' else '/en' }}">
+    <link rel="alternate" hreflang="cs" href="{{ base_url }}/">
+    <link rel="alternate" hreflang="en" href="{{ base_url }}/en">
+    <link rel="alternate" hreflang="x-default" href="{{ base_url }}/">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="{{ t.seo.title if t.seo else t.meta.title }}">
+    <meta property="og:description" content="{{ t.seo.description if t.seo else t.hero.paragraph[:160] }}">
+    <meta property="og:image" content="{{ base_url }}/Borek.png">
+    <meta property="og:url" content="{{ base_url }}{{ '/' if lang == 'cs' else '/en' }}">
+    <meta property="og:locale" content="{{ 'cs_CZ' if lang == 'cs' else 'en_US' }}">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ t.seo.title if t.seo else t.meta.title }}">
+    <meta name="twitter:description" content="{{ t.seo.description if t.seo else t.hero.paragraph[:160] }}">
+    <meta name="twitter:image" content="{{ base_url }}/Borek.png">
+
+    <!-- JSON-LD Person -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": {{ t.nav.brand|tojson }},
+      "jobTitle": {{ (t.seo.person_job_title if t.seo and t.seo.person_job_title else 'Account Manager')|tojson }},
+      "description": {{ (t.seo.description if t.seo else t.hero.paragraph)|tojson }},
+      "email": {{ (t.seo.person_email if t.seo and t.seo.person_email else '067bok@gmail.com')|tojson }},
+      "telephone": {{ (t.seo.person_phone if t.seo and t.seo.person_phone else '+420776629221')|tojson }},
+      "url": {{ (base_url + ('/' if lang == 'cs' else '/en'))|tojson }},
+      "sameAs": [{{ (t.seo.person_linkedin if t.seo and t.seo.person_linkedin else 'https://www.linkedin.com/in/borekkuhanek/')|tojson }}]
+    }
+    </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-W5VRYFN0CH"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-W5VRYFN0CH');
+    </script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #0f1115; color: white; overflow-x: hidden; }
+        .content-wrapper { max-width: 1600px; margin: 0 auto; padding: 0 1rem; }
+        @media (min-width: 640px) { .content-wrapper { padding: 0 1.5rem; } }
+        @media (min-width: 1024px) { .content-wrapper { padding: 0 2rem; } }
+        .text-accent { color: #00f2ff; }
+        .bg-accent { background-color: #00f2ff; }
+        .border-accent { border-color: #00f2ff; }
+        html { scroll-behavior: smooth; }
+        .section-heading-hidden { display: none; }
+        #ai-chat-container { position: fixed; bottom: 0.75rem; right: 0.75rem; z-index: 9999; }
+        @media (min-width: 640px) { #ai-chat-container { bottom: 1.5rem; right: 1.5rem; } }
+        #ai-chat-window { transition: width 0.3s ease, height 0.3s ease; }
+        img { max-width: 100%; height: auto; }
+        #hero-image { object-fit: cover; object-position: center; }
+        .ai-choice-btn:active { transform: scale(0.97); }
+        @media (hover: none) { .ai-choice-btn { border-color: #4b5563; } .group:active .ai-choice-btn { border-color: #00f2ff; color: #00f2ff; } }
+        @keyframes mic-pulse { 0%, 100% { transform: scale(1); opacity: 0.7; } 50% { transform: scale(1.12); opacity: 1; } }
+        .mic-speaking { animation: mic-pulse 0.7s ease-in-out infinite; }
+        .comic-bubble { position: relative; padding: 0.75rem 1.25rem; background: rgba(0,242,255,0.15); border: 2px solid rgba(0,242,255,0.5); border-radius: 1rem; font-size: 1.5rem; color: #00f2ff; min-width: 4rem; text-align: center; }
+        .comic-bubble::before { content: ''; position: absolute; top: -8px; left: 50%; transform: translateX(-50%); border: 8px solid transparent; border-bottom-color: rgba(0,242,255,0.5); }
+    </style>
+</head>
+<body class="antialiased">
+
+    <nav class="w-full border-b border-gray-800">
+        <div class="content-wrapper py-6 flex justify-between items-center">
+            <div class="text-xl font-bold tracking-tight">{{ t.nav.brand }}</div>
+            <div class="hidden md:flex space-x-8 text-sm uppercase tracking-widest text-gray-400">
+                <a href="#specializace" class="hover:text-white transition">{{ t.nav.specializace }}</a>
+                <a href="#dovednosti" class="hover:text-white transition">{{ t.nav.dovednosti }}</a>
+                <a href="#kariera" class="hover:text-white transition">{{ t.nav.kariera }}</a>
+                <a href="#o-mne" class="hover:text-white transition">{{ t.nav.o_mne }}</a>
+                <a href="#kontakt" class="hover:text-white transition">{{ t.nav.kontakt }}</a>
+            </div>
+            <div class="flex space-x-3 items-center">
+                <a href="/" class="text-sm font-medium px-2 py-1 rounded {% if lang == 'cs' %}text-accent border border-accent hover:bg-accent hover:text-black{% else %}text-gray-400 border border-gray-600 hover:border-gray-500 hover:text-white{% endif %} transition" title="{{ t.nav.cz_label }}">CZ</a>
+                <a href="/en" class="text-sm font-medium px-2 py-1 rounded {% if lang == 'en' %}text-accent border border-accent hover:bg-accent hover:text-black{% else %}text-gray-400 border border-gray-600 hover:border-gray-500 hover:text-white{% endif %} transition" title="{{ t.nav.en_label }}">EN</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="w-full relative min-h-[80vh] flex items-center overflow-hidden">
+        <div class="content-wrapper w-full z-10">
+            <div class="md:w-1/2 text-left py-12">
+                <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight mb-4">
+                    {{ t.hero.title }}
+                </h1>
+                <p class="text-base text-gray-300 mb-6 max-w-lg">
+                    {{ t.hero.paragraph }}
+                </p>
+                <a href="#specializace" class="inline-block bg-accent text-black px-6 py-3 font-bold rounded-sm hover:bg-cyan-400 transition uppercase tracking-widest text-xs">
+                    {{ t.hero.cta }}
+                </a>
+            </div>
+        </div>
+
+        <div class="absolute top-0 right-0 w-full md:w-1/2 h-full z-0">
+            <div class="h-full w-full grayscale hover:grayscale-0 transition duration-700 ease-in-out">
+                <img id="hero-image" src="Borek.png" alt="{{ t.nav.brand }}" class="w-full h-full object-cover object-center shadow-2xl">
+                <div class="absolute inset-0 bg-gradient-to-r from-[#0f1115] via-transparent to-transparent md:hidden"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="specializace" class="w-full py-12 bg-[#16191e]">
+        <div class="content-wrapper">
+            <h2 class="text-3xl font-bold mb-8 border-l-4 border-accent pl-6">{{ t.specializace.title }}</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                {% for item in t.specializace['items'] %}
+                <div class="p-6 bg-[#1f232a] rounded-lg">
+                    <h3 class="font-bold text-accent mb-4">{{ item.title }}</h3>
+                    <p class="text-gray-400 text-sm">{{ item.description }}</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <section id="dovednosti" class="w-full py-12 bg-[#16191e]">
+        <div class="content-wrapper">
+            <h2 class="text-3xl font-bold mb-8 border-l-4 border-accent pl-6">{{ t.dovednosti.title }}</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                {% for tool in t.dovednosti['tools'] %}
+                <div class="p-4 bg-[#1f232a] rounded-lg border border-gray-800">
+                    <div class="flex items-center gap-3 mb-3">
+                        {% if loop.index0 == 0 %}
+                        <img src="https://cdn.simpleicons.org/python/00f2ff" class="w-6 h-6 flex-shrink-0 object-contain" alt="Python">
+                        {% elif loop.index0 == 1 %}
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/4/40/Adobe_Premiere_Pro_CC_icon.svg" class="w-6 h-6 flex-shrink-0 object-contain" alt="Premiere Pro">
+                        {% elif loop.index0 == 2 %}
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/a/af/Adobe_Photoshop_CC_icon.svg" class="w-6 h-6 flex-shrink-0 object-contain" alt="Photoshop">
+                        {% else %}
+                        <img src="/static/icons/english.png" class="w-9 h-9 flex-shrink-0 object-contain" alt="English">
+                        {% endif %}
+                        <h3 class="font-bold text-lg text-accent">{{ tool.title }}</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">{{ tool.description }}</p>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-4 lg:grid-cols-7 gap-2">
+                {% for icon in t.dovednosti['icons'] %}
+                <div class="px-2 py-2 bg-[#1f232a] rounded border border-gray-800 flex items-center gap-2 min-w-0">
+                    <img src="/static/icons/{{ icon|lower }}.png" class="w-16 h-16 flex-shrink-0 object-contain" alt="{{ icon }}">
+                    <span class="font-medium text-xs text-white truncate">{{ icon }}</span>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <section id="kariera" class="w-full py-12 bg-[#16191e]">
+        <div class="content-wrapper">
+            <h2 class="text-3xl font-bold mb-8 border-l-4 border-accent pl-6">{{ t.kariera.title }}</h2>
+            <div class="space-y-6">
+                {% for item in t.kariera['items'] %}
+                <div class="border-b border-gray-800 pb-6 grid md:grid-cols-3 gap-6">
+                    <div class="text-xl font-bold">{{ item.company }}</div>
+                    <div class="md:col-span-2 space-y-2">
+                        <p><strong class="text-accent">{{ t.kariera.position_label }}:</strong> {{ item.position }}</p>
+                        <p><strong class="text-accent">{{ t.kariera.description_label }}:</strong> {{ item.description }}</p>
+                        <p><strong class="text-white">{{ t.kariera.period_label }}:</strong> {{ item.period }}</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <section id="o-mne" class="w-full py-24">
+        <div class="content-wrapper">
+            <h2 class="text-3xl font-bold mb-16 border-l-4 border-accent pl-6">{{ t.o_mne.title }}</h2>
+            <div class="max-w-3xl text-gray-300 space-y-6">
+                <h3 class="text-2xl font-bold text-white">{{ t.o_mne.story_title }}</h3>
+                {% for p in t.o_mne['paragraphs'] %}
+                <p>{{ p }}</p>
+                {% endfor %}
+
+                <h3 class="text-xl font-bold text-accent mt-10 mb-3">{{ t.o_mne.bridge_title }}</h3>
+                <p>{{ t.o_mne.bridge_intro }}</p>
+                <ul class="list-disc list-inside space-y-2 ml-2">
+                    {% for item in t.o_mne['bridge_items'] %}
+                    <li>{{ item }}</li>
+                    {% endfor %}
+                </ul>
+
+                <h3 class="text-xl font-bold text-accent mt-10 mb-3">{{ t.o_mne.vision_title }}</h3>
+                {% for p in t.o_mne['vision_paragraphs'] %}
+                <p>{{ p }}</p>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <section id="kontakt" class="w-full py-24 bg-accent text-black">
+        <div class="content-wrapper text-center">
+            <h2 class="text-4xl font-bold mb-6">{{ t.kontakt.title }}</h2>
+            <p class="text-xl mb-12 max-w-2xl mx-auto">{{ t.kontakt.subtitle }}</p>
+            <div class="flex flex-wrap justify-center gap-6">
+                <a href="/static/cv/cv-cz.pdf" class="bg-black text-white px-8 py-4 font-bold rounded-sm hover:bg-gray-800 transition">{{ t.downloads.cv_cz }}</a>
+                <a href="/static/cv/cv-en.pdf" class="bg-black text-white px-8 py-4 font-bold rounded-sm hover:bg-gray-800 transition">{{ t.downloads.cv_en }}</a>
+                <a href="https://www.linkedin.com/in/borekkuhanek/" target="_blank" class="border-2 border-black px-8 py-4 font-bold rounded-sm hover:bg-black hover:text-white transition">{{ t.kontakt.linkedin }}</a>
+            </div>
+            <div class="mt-12 font-mono text-lg">
+                {{ t.kontakt.contact_info }}
+            </div>
+        </div>
+    </section>
+
+    <footer class="w-full py-8 border-t border-gray-800">
+        <div class="content-wrapper text-center text-gray-500 text-sm">
+            {{ t.footer.copyright }}
+        </div>
+    </footer>
+
+    <!-- AI Chat - rozbalovací chatové okno (pravý dolní roh) -->
+    <div id="ai-chat-container">
+        <div id="ai-chat-window" class="flex flex-col rounded-xl bg-[#1f232a] border border-gray-700 shadow-2xl overflow-hidden">
+            <div id="ai-chat-toggle" class="ai-chat-collapsed w-28 sm:w-36 md:w-44 flex flex-col items-center gap-1 sm:gap-2 p-1 sm:p-2 cursor-pointer hover:bg-[#2a2f38] transition rounded-lg" aria-label="Otevřít AI asistenta">
+                <img src="/static/avatar.png" alt="AI Avatar" class="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 object-contain object-center grayscale opacity-80">
+                <span class="text-xs sm:text-sm font-medium text-gray-400 text-center leading-tight">Zeptej se mě</span>
+            </div>
+
+            <div id="ai-chat-expanded" class="ai-chat-expanded hidden w-[calc(100vw-1.5rem)] max-w-[400px] h-[85vh] max-h-[600px] sm:w-[400px] sm:h-[600px] flex-col">
+                <div class="flex items-center justify-between px-4 py-3 border-b border-gray-700 bg-[#16191e]">
+                    <div class="flex items-center gap-2">
+                        <button type="button" id="ai-chat-back" class="hidden p-1 rounded hover:bg-gray-700 text-gray-400 hover:text-white transition" aria-label="Zpět na hlas">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+                        </button>
+                        <span class="font-bold text-accent">AI Avatar</span>
+                    </div>
+                    <button type="button" id="ai-chat-close" class="p-1 rounded hover:bg-gray-700 text-gray-400 hover:text-white transition" aria-label="Zavřít">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+                    </button>
+                </div>
+
+                <div id="ai-chat-v1" class="flex-1 flex flex-col min-h-0">
+                    <div id="ai-chat-v1-choice" class="flex-1 flex flex-col items-center justify-center p-4 sm:p-6 gap-4 sm:gap-6">
+                        <img src="/static/avatar.png" alt="AI Avatar" class="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 object-contain object-center">
+                        <div class="flex items-center gap-6 sm:gap-8">
+                            <div class="flex flex-col items-center gap-2 group cursor-pointer" id="ai-choice-call-wrap" title="Zavolej mému AI!">
+                                <button type="button" id="ai-chat-call" class="ai-choice-btn w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full bg-[#2a2f38] border-2 border-gray-600 text-gray-500 flex items-center justify-center transition-all duration-200 group-hover:border-accent group-hover:text-accent group-hover:bg-accent/10" aria-label="Zavolej mému AI!">
+                                    <svg class="w-8 h-8 sm:w-10 sm:h-10" fill="currentColor" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                                </button>
+                                <span class="text-xs text-gray-500 group-hover:text-accent transition-colors">Zavolej</span>
+                            </div>
+                            <div class="flex flex-col items-center gap-2 group cursor-pointer" id="ai-choice-text-wrap" title="Napiš mému AI!">
+                                <button type="button" id="ai-chat-to-text" class="ai-choice-btn w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-lg bg-[#2a2f38] border-2 border-gray-600 text-gray-500 flex items-center justify-center transition-all duration-200 group-hover:border-accent group-hover:text-accent group-hover:bg-accent/10" aria-label="Napiš mému AI!">
+                                    <svg class="w-8 h-8 sm:w-10 sm:h-10" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+                                </button>
+                                <span class="text-xs text-gray-500 group-hover:text-accent transition-colors">Napiš</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="ai-chat-v1-call" class="hidden flex-1 flex flex-col p-4 sm:p-6 min-h-0">
+                        <div class="flex-1 flex flex-col items-center justify-center gap-6 min-h-0">
+                            <img src="/static/avatar.png" alt="AI Avatar" class="w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 object-contain object-center flex-shrink-0">
+                            <div id="ai-call-status" class="flex flex-col items-center justify-center gap-2 min-h-[5rem]"></div>
+                        </div>
+                        <button type="button" id="ai-chat-end-call" class="w-full py-2 rounded-lg bg-red-500/20 text-red-400 border border-red-500/50 hover:bg-red-500/30 transition text-sm font-medium" aria-label="Ukončit hovor">Ukončit hovor</button>
+                    </div>
+                </div>
+
+                <div id="ai-chat-v2" class="hidden flex-1 flex flex-col min-h-0">
+                    <div id="ai-chat-messages" class="flex-1 overflow-y-auto p-4 space-y-4 min-h-0">
+                        <div class="text-sm text-gray-400 text-center py-8">
+                            Ahoj! Jsem AI Avatar. Zde můžeš psát. Jak ti mohu pomoci?
+                        </div>
+                    </div>
+                    <div class="p-3 border-t border-gray-700 bg-[#16191e]">
+                        <div class="flex gap-2 items-center">
+                            <input type="text" id="ai-chat-input" placeholder="Napište zprávu..." class="flex-1 px-4 py-2 rounded-lg bg-[#1f232a] border border-gray-700 text-white text-sm placeholder-gray-500 focus:outline-none focus:border-accent disabled:opacity-50 disabled:cursor-not-allowed" maxlength="2000">
+                            <button type="button" id="ai-chat-stop" class="hidden w-10 h-10 rounded-full bg-red-500 hover:bg-red-600 flex items-center justify-center text-white flex-shrink-0" aria-label="Zastavit" title="Zastavit přehrávání">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12"/></svg>
+                            </button>
+                            <button type="button" id="ai-chat-send" class="p-2 rounded-lg bg-accent text-black hover:bg-cyan-400 transition disabled:opacity-50 disabled:cursor-not-allowed" aria-label="Odeslat">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            const API_BASE = '';
+            const PAGE_LANG = '{{ lang }}';
+            const isSecure = location.protocol === 'https:' || location.hostname === 'localhost' || location.hostname === '127.0.0.1';
+            let sessionId = null;
+            let currentAudio = null;
+            let callActive = false;
+            let isAISpeaking = false;
+            let recognition = null;
+            let collectedTexts = [];
+            let silenceTimeout = null;
+            let userRequestedStop = false;
+
+            function debugLog(msg, data) {
+                const ts = new Date().toLocaleTimeString('{{ "cs-CZ" if lang == "cs" else "en-US" }}');
+                const line = data !== undefined ? `${ts} ${msg} ${typeof data === 'object' ? JSON.stringify(data) : data}` : `${ts} ${msg}`;
+                console.log('[AI Avatar]', line);
+                const el = document.getElementById('ai-debug-log');
+                if (el) {
+                    el.textContent += line + '\n';
+                    el.scrollTop = el.scrollHeight;
+                }
+            }
+
+            debugLog('Stránka načtena', { secureContext: isSecure, protocol: location.protocol });
+            const toggle = document.getElementById('ai-chat-toggle');
+            const expanded = document.getElementById('ai-chat-expanded');
+            const closeBtn = document.getElementById('ai-chat-close');
+            const v1View = document.getElementById('ai-chat-v1');
+            const v1Choice = document.getElementById('ai-chat-v1-choice');
+            const v1Call = document.getElementById('ai-chat-v1-call');
+            const v2View = document.getElementById('ai-chat-v2');
+            const callBtn = document.getElementById('ai-chat-call');
+            const toTextBtn = document.getElementById('ai-chat-to-text');
+            const backBtn = document.getElementById('ai-chat-back');
+            const endCallBtn = document.getElementById('ai-chat-end-call');
+            const input = document.getElementById('ai-chat-input');
+            const sendBtn = document.getElementById('ai-chat-send');
+            const stopBtn = document.getElementById('ai-chat-stop');
+            const messages = document.getElementById('ai-chat-messages');
+            const callStatusEl = document.getElementById('ai-call-status');
+
+            function openChat() {
+                toggle.classList.add('hidden');
+                expanded.classList.remove('hidden');
+                expanded.classList.add('flex');
+                v1View.classList.remove('hidden');
+                v1View.classList.add('flex');
+                v1Choice.classList.remove('hidden');
+                v1Choice.classList.add('flex');
+                v1Call.classList.add('hidden');
+                v1Call.classList.remove('flex');
+                v2View.classList.add('hidden');
+                v2View.classList.remove('flex');
+                backBtn.classList.add('hidden');
+            }
+
+            function closeChat() {
+                expanded.classList.add('hidden');
+                expanded.classList.remove('flex');
+                toggle.classList.remove('hidden');
+                userRequestedStop = true;
+                clearTimeout(silenceTimeout);
+                if (currentAudio) { currentAudio.pause(); currentAudio = null; }
+                if (window.speechSynthesis) speechSynthesis.cancel();
+                if (recognition) try { recognition.stop(); } catch (_) {}
+                callActive = false;
+                showCallChoice();
+            }
+
+            function showCallView() {
+                v1Choice.classList.add('hidden');
+                v1Choice.classList.remove('flex');
+                v1Call.classList.remove('hidden');
+                v1Call.classList.add('flex');
+                callActive = true;
+            }
+
+            function showCallChoice() {
+                v1Call.classList.add('hidden');
+                v1Call.classList.remove('flex');
+                v1Choice.classList.remove('hidden');
+                v1Choice.classList.add('flex');
+                callActive = false;
+                if (dotsInterval) { clearInterval(dotsInterval); dotsInterval = null; }
+            }
+
+            let dotsInterval = null;
+            function updateCallStatus(state, customText, isUserSpeaking) {
+                if (!callStatusEl) return;
+                currentCallState = state;
+                if (dotsInterval) { clearInterval(dotsInterval); dotsInterval = null; }
+                if (state === 'thinking') {
+                    callStatusEl.innerHTML = '<div class="flex items-center gap-2"><svg class="w-8 h-8 text-amber-400 animate-pulse flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z"/></svg><span class="text-sm text-amber-400">Zpracovává</span></div>';
+                } else if (state === 'ai_speaking') {
+                    const bubble = document.createElement('div');
+                    bubble.className = 'comic-bubble';
+                    bubble.id = 'ai-comic-dots';
+                    bubble.textContent = '.';
+                    callStatusEl.innerHTML = '';
+                    callStatusEl.appendChild(bubble);
+                    let d = 0;
+                    dotsInterval = setInterval(() => {
+                        const el = document.getElementById('ai-comic-dots');
+                        if (!el || !callStatusEl.contains(el)) { clearInterval(dotsInterval); return; }
+                        d = (d + 1) % 4;
+                        el.textContent = '.'.repeat(d || 3);
+                    }, 350);
+                } else if (state === 'custom' && customText) {
+                    callStatusEl.innerHTML = '<div class="flex flex-col items-center gap-2"><div class="w-16 h-16 rounded-full bg-gray-600/50 flex items-center justify-center"><svg class="w-8 h-8 text-gray-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"/><path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/></svg></div><span class="text-sm text-gray-400 text-center">' + customText + '</span></div>';
+                } else {
+                    const micClass = isUserSpeaking ? 'mic-speaking' : '';
+                    callStatusEl.innerHTML = '<div class="flex flex-col items-center gap-2"><div id="ai-call-mic" class="w-16 h-16 rounded-full bg-accent/20 border-2 border-accent flex items-center justify-center ' + micClass + '"><svg class="w-8 h-8 text-accent" fill="currentColor" viewBox="0 0 24 24"><path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"/><path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/></svg></div><span class="text-sm text-gray-400 text-center">Mluvte – po krátké pauze se odešle. Teď jste na řadě.</span></div>';
+                }
+            }
+
+            let currentCallState = 'user_speaking';
+            function setUserSpeakingInCall(speaking) {
+                if (currentCallState !== 'user_speaking') return;
+                const mic = document.getElementById('ai-call-mic');
+                if (mic) mic.classList.toggle('mic-speaking', speaking);
+            }
+
+            function setInputsEnabled(enabled) {
+                isAISpeaking = !enabled;
+                input.disabled = !enabled;
+                sendBtn.disabled = !enabled;
+                stopBtn.classList.toggle('hidden', enabled);
+            }
+
+            function addMessage(text, isUser, audioAvailable = false) {
+                const welcome = messages.querySelector('.text-center');
+                if (welcome) welcome.remove();
+                const div = document.createElement('div');
+                div.className = 'flex flex-col ' + (isUser ? 'items-end' : 'items-start');
+                const bubble = document.createElement('div');
+                bubble.className = 'max-w-[85%] px-4 py-2 rounded-lg text-sm ' + (isUser ? 'bg-accent text-black' : 'bg-[#2a2f38] text-gray-200');
+                bubble.textContent = text;
+                div.appendChild(bubble);
+                if (!isUser && audioAvailable) {
+                    const playBtn = document.createElement('button');
+                    playBtn.className = 'mt-1 text-xs text-accent hover:underline';
+                    playBtn.textContent = '▶ Přehrát hlas';
+                    const isUnsupported = text === 'I am sorry, can you please speak in Czech or English?';
+                    playBtn.onclick = () => isUnsupported ? playUnsupportedLangAudio() : playAudio(text);
+                    div.appendChild(playBtn);
+                }
+                messages.appendChild(div);
+                messages.scrollTop = messages.scrollHeight;
+            }
+
+            function addLoading() {
+                const welcome = messages.querySelector('.text-center');
+                if (welcome) welcome.remove();
+                const div = document.createElement('div');
+                div.id = 'ai-loading';
+                div.className = 'flex justify-start';
+                div.innerHTML = '<div class="px-4 py-2 rounded-lg text-sm bg-[#2a2f38] text-gray-400">Přemýšlím...</div>';
+                messages.appendChild(div);
+                messages.scrollTop = messages.scrollHeight;
+            }
+
+            function removeLoading() {
+                const el = document.getElementById('ai-loading');
+                if (el) el.remove();
+            }
+
+            function speakWithBrowser(text) {
+                debugLog('speakWithBrowser start', { len: text?.length });
+                if (!window.speechSynthesis) {
+                    debugLog('speechSynthesis není dostupná');
+                    startVoiceSession();
+                    return;
+                }
+                if (!text || !text.trim()) {
+                    debugLog('speakWithBrowser: prázdný text');
+                    startVoiceSession();
+                    return;
+                }
+                speechSynthesis.cancel();
+                updateCallStatus('ai_speaking');
+                setInputsEnabled(false);
+                const u = new SpeechSynthesisUtterance(text.trim());
+                u.lang = PAGE_LANG === 'en' ? 'en-US' : 'cs-CZ';
+                u.rate = 0.95;
+                u.volume = 1;
+                const voices = speechSynthesis.getVoices();
+                const csVoice = voices.find(v => v.lang.startsWith('cs'));
+                if (csVoice) { u.voice = csVoice; debugLog('Použit hlas:', csVoice.name); }
+                u.onstart = () => debugLog('speechSynthesis onstart');
+                u.onend = () => {
+                    debugLog('speechSynthesis onend');
+                    updateCallStatus('user_speaking');
+                    setInputsEnabled(true);
+                    startVoiceSession();
+                };
+                u.onerror = (e) => {
+                    debugLog('speechSynthesis onerror', e.error);
+                    updateCallStatus('user_speaking');
+                    setInputsEnabled(true);
+                    startVoiceSession();
+                };
+                speechSynthesis.speak(u);
+                debugLog('speechSynthesis.speak() voláno');
+            }
+
+            async function playUnsupportedLangAudio() {
+                if (currentAudio) { currentAudio.pause(); currentAudio = null; }
+                setInputsEnabled(false);
+                const inCallView = v1Call && !v1Call.classList.contains('hidden');
+                if (inCallView) updateCallStatus('ai_speaking');
+                const inVoiceMode = v2View.classList.contains('hidden');
+                const onDone = () => {
+                    if (inCallView) updateCallStatus('user_speaking');
+                    setInputsEnabled(true);
+                    if (inVoiceMode) startVoiceSession();
+                };
+                try {
+                    const res = await fetch(API_BASE + '/api/audio/unsupported-lang');
+                    if (!res.ok) throw new Error('Audio nedostupné');
+                    const blob = await res.blob();
+                    const url = URL.createObjectURL(blob);
+                    currentAudio = new Audio(url);
+                    currentAudio.onended = () => { URL.revokeObjectURL(url); onDone(); };
+                    currentAudio.onerror = () => {
+                        speakWithBrowser('I am sorry, can you please speak in Czech or English?');
+                        onDone();
+                    };
+                    await currentAudio.play();
+                } catch (err) {
+                    debugLog('playUnsupportedLangAudio CHYBA:', err.message);
+                    speakWithBrowser('I am sorry, can you please speak in Czech or English?');
+                    onDone();
+                }
+            }
+
+            async function playAudio(text) {
+                debugLog('playAudio start');
+                if (currentAudio) { currentAudio.pause(); currentAudio = null; }
+                setInputsEnabled(false);
+                const inCallView = v1Call && !v1Call.classList.contains('hidden');
+                if (inCallView) updateCallStatus('ai_speaking');
+                try {
+                    const res = await fetch(API_BASE + '/api/audio?text=' + encodeURIComponent(text));
+                    if (!res.ok) throw new Error('Audio nedostupné');
+                    const blob = await res.blob();
+                    const url = URL.createObjectURL(blob);
+                    currentAudio = new Audio(url);
+                    currentAudio.onended = () => {
+                        debugLog('playAudio onended');
+                        URL.revokeObjectURL(url);
+                        if (inCallView) { updateCallStatus('user_speaking'); startVoiceSession(); }
+                        setInputsEnabled(true);
+                    };
+                    currentAudio.onerror = () => {
+                        if (inCallView) { updateCallStatus('user_speaking'); startVoiceSession(); }
+                        setInputsEnabled(true);
+                    };
+                    await currentAudio.play();
+                } catch (err) {
+                    debugLog('playAudio CHYBA:', err.message);
+                    console.error(err);
+                    if (inCallView) { updateCallStatus('user_speaking'); startVoiceSession(); }
+                    setInputsEnabled(true);
+                    alert('Nepodařilo se přehrát hlas.');
+                }
+            }
+
+            async function sendMessage() {
+                const text = input.value.trim();
+                if (!text || isAISpeaking) return;
+                input.value = '';
+                setInputsEnabled(false);
+                addMessage(text, true);
+
+                let data;
+                try {
+                    addLoading();
+                    const body = { message: text, session_id: sessionId, text_only: true, page_lang: PAGE_LANG };
+                    const res = await fetch(API_BASE + '/api/chat', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(body)
+                    });
+                    data = await res.json();
+                    sessionId = data.session_id;
+                    removeLoading();
+                    addMessage(data.response, false, false);
+                    setInputsEnabled(true);
+                } catch (err) {
+                    removeLoading();
+                    addMessage('Omlouvám se, momentálně jsem nedostupný.', false);
+                    console.error(err);
+                    setInputsEnabled(true);
+                }
+            }
+
+            document.getElementById('ai-choice-call-wrap')?.addEventListener('click', function() { callBtn.click(); });
+            document.getElementById('ai-choice-text-wrap')?.addEventListener('click', function() { toTextBtn.click(); });
+
+            toTextBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                if (recognition && callActive) { try { recognition.stop(); } catch (_) {} showCallChoice(); }
+                v1View.classList.add('hidden');
+                v1View.classList.remove('flex');
+                v2View.classList.remove('hidden');
+                v2View.classList.add('flex');
+                backBtn.classList.remove('hidden');
+                input.focus();
+            });
+
+            backBtn.addEventListener('click', function() {
+                v2View.classList.add('hidden');
+                v2View.classList.remove('flex');
+                v1View.classList.remove('hidden');
+                v1View.classList.add('flex');
+                showCallChoice();
+                backBtn.classList.add('hidden');
+            });
+
+            endCallBtn?.addEventListener('click', function() {
+                userRequestedStop = true;
+                clearTimeout(silenceTimeout);
+                if (currentAudio) { currentAudio.pause(); currentAudio = null; }
+                if (window.speechSynthesis) speechSynthesis.cancel();
+                if (recognition) try { recognition.stop(); } catch (_) {}
+                showCallChoice();
+            });
+
+            function initSpeechRecognition() {
+                const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+                debugLog('SpeechRecognition podpora:', !!SpeechRecognition);
+                if (!SpeechRecognition) return null;
+                const rec = new SpeechRecognition();
+                rec.continuous = true;
+                rec.interimResults = true;
+                rec.lang = PAGE_LANG === 'en' ? 'en-US' : 'cs-CZ';
+                debugLog('SpeechRecognition inicializováno, lang=' + rec.lang);
+                return rec;
+            }
+
+            async function processVoiceInput(transcript) {
+                debugLog('processVoiceInput', { transcript: transcript?.substring(0, 50) });
+                if (!transcript || !transcript.trim()) return;
+                const inCallView = v1Call && !v1Call.classList.contains('hidden');
+                if (!inCallView) addMessage(transcript, true);
+                setUserSpeakingInCall(false);
+                updateCallStatus('thinking');
+                let data = null;
+
+                try {
+                    const body = { message: transcript.trim(), session_id: sessionId, text_only: false, page_lang: PAGE_LANG };
+                    const res = await fetch(API_BASE + '/api/chat', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(body)
+                    });
+                    data = await res.json();
+                    debugLog('API chat odpověď', { sessionId: data.session_id, audio_available: data.audio_available });
+                    sessionId = data.session_id;
+                    if (!inCallView) addMessage(data.response, false, data.audio_available || data.unsupported_lang_audio);
+                    if (data.unsupported_lang_audio) {
+                        await playUnsupportedLangAudio();
+                    } else if (data.audio_available) {
+                        await playAudio(data.response);
+                    } else if (data.response) {
+                        debugLog('Žádné audio z API – fallback Web Speech');
+                        speakWithBrowser(data.response);
+                    } else {
+                        updateCallStatus('user_speaking');
+                        setInputsEnabled(true);
+                        startVoiceSession();
+                    }
+                } catch (err) {
+                    debugLog('processVoiceInput CHYBA:', err.message);
+                    if (!inCallView) addMessage('Omlouvám se, momentálně jsem nedostupný.', false);
+                    console.error(err);
+                    updateCallStatus('user_speaking');
+                    setInputsEnabled(true);
+                    startVoiceSession();
+                }
+            }
+
+            function startVoiceSession() {
+                debugLog('startVoiceSession');
+                if (!recognition) recognition = initSpeechRecognition();
+                if (!recognition) {
+                    debugLog('CHYBA: recognition je null');
+                    return;
+                }
+                collectedTexts = [];
+                userRequestedStop = false;
+                clearTimeout(silenceTimeout);
+                setInputsEnabled(false);
+                updateCallStatus('user_speaking');
+
+                recognition.onresult = (e) => {
+                    if (userRequestedStop) return;
+                    let hasInterim = false;
+                    for (let i = 0; i < e.results.length; i++) {
+                        if (e.results[i].isFinal) {
+                            collectedTexts.push(e.results[i][0].transcript);
+                        } else {
+                            hasInterim = true;
+                        }
+                    }
+                    setUserSpeakingInCall(hasInterim);
+                    debugLog('onresult', { resultsCount: e.results.length, hasInterim });
+                    clearTimeout(silenceTimeout);
+                    silenceTimeout = setTimeout(() => {
+                        const text = collectedTexts.join(' ').trim();
+                        debugLog('silence timeout, odešlu:', text ? text.substring(0, 80) + (text.length > 80 ? '...' : '') : '(prázdné)');
+                        if (text && !userRequestedStop) {
+                            recognition.stop();
+                            processVoiceInput(text);
+                        }
+                    }, 2000);
+                };
+                recognition.onerror = (e) => {
+                    debugLog('onerror', { error: e.error, message: e.message });
+                    if (e.error === 'not-allowed') debugLog('TIP: Povolte mikrofon v prohlížeči (ikona zámku/adresa)');
+                    if (e.error === 'no-speech') {
+                        debugLog('no-speech – restartuji poslech');
+                        updateCallStatus('custom', 'Nerozpoznáno – mluvte znovu.');
+                        setTimeout(() => startVoiceSession(), 500);
+                        return;
+                    }
+                    if (e.error !== 'aborted') {
+                        setInputsEnabled(true);
+                        updateCallStatus('custom', 'Chyba mikrofonu (' + e.error + '). Zkus znovu.');
+                    }
+                };
+                recognition.onend = () => {
+                    debugLog('onend', { userRequestedStop });
+                    if (userRequestedStop) {
+                        userRequestedStop = false;
+                        setInputsEnabled(true);
+                        return;
+                    }
+                };
+                try {
+                    recognition.start();
+                    debugLog('recognition.start() voláno');
+                } catch (err) {
+                    debugLog('CHYBA recognition.start():', err.message);
+                }
+            }
+
+            callBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                debugLog('callBtn click');
+                if (!recognition) recognition = initSpeechRecognition();
+                if (!recognition) {
+                    debugLog('Prohlížeč nepodporuje SpeechRecognition');
+                    alert('Prohlížeč nepodporuje rozpoznávání řeči. Zkus Chrome nebo Edge.');
+                    return;
+                }
+                showCallView();
+                updateCallStatus('user_speaking');
+                setInputsEnabled(false);
+                startVoiceSession();
+            });
+
+            stopBtn.addEventListener('click', function() {
+                if (currentAudio) { currentAudio.pause(); currentAudio = null; }
+                setInputsEnabled(true);
+            });
+
+            toggle.addEventListener('click', openChat);
+            closeBtn.addEventListener('click', closeChat);
+            sendBtn.addEventListener('click', sendMessage);
+            input.addEventListener('keydown', function(e) { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); } });
+        })();
+    </script>
+
+</body>
+</html>

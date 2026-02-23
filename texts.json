@@ -1,0 +1,264 @@
+{
+  "cs": {
+    "meta": {
+      "title": "Bořek Kulhánek - Account Manager s přesahem do AI",
+      "lang": "cs"
+    },
+    "seo": {
+      "title": "Bořek Kulhánek | Account Manager s přesahem do AI",
+      "description": "Zkušený B2B Account Manager, který propojuje obchod s praktickým využitím AI. Prozkoumejte projekty, které řeší reálné byznysové výzvy.",
+      "keywords": "Account Manager, B2B, AI, obchod, konzultativní prodej",
+      "person_job_title": "Account Manager",
+      "person_email": "067bok@gmail.com",
+      "person_phone": "+420776629221",
+      "person_linkedin": "https://www.linkedin.com/in/borekkuhanek/"
+    },
+    "nav": {
+      "brand": "Bořek Kulhánek",
+      "specializace": "Specializace",
+      "dovednosti": "Nástroje",
+      "kariera": "Kariéra",
+      "o_mne": "O mně",
+      "kontakt": "Kontakt",
+      "cz_label": "Česky",
+      "en_label": "English"
+    },
+    "hero": {
+      "title": "B2B Partner v éře AI",
+      "paragraph": "Opírám se o 20 let praxe v komplexním prodeji s využitím nejmodernějších nástrojů. Věřím, že technologie dnes byznys rapidně transformují a klíčem k úspěchu je se v nich plně orientovat pro znásobení efektivity. Moderní nástroje tu nejsou od toho, aby obchodníka nahradily, ale aby vylepšily jeho schopnosti a zajistily růst v době, kdy se svět obchodu dramaticky a rychle vyvíjí.",
+      "cta": "Více o mně"
+    },
+    "downloads": {
+      "cv_cz": "Stáhnout CV (CZ)",
+      "cv_en": "Stáhnout CV (EN)"
+    },
+    "specializace": {
+      "title": "Specializace",
+      "items": [
+        {
+          "title": "Strategický B2B Account Management",
+          "description": "Mým cílem není jen spravovat kontakty, ale budovat skutečná a dlouhodobá partnerství. Ponořím se hluboko do byznysu klienta, abych pochopil jeho výzvy a cíle. To mi umožňuje fungovat jako strategický poradce, který mu pomáhá nacházet nové cesty."
+        },
+        {
+          "title": "Business Development a Akvizice",
+          "description": "Aktivně vyhledávám, oslovuji a navazuji vztahy s novými klienty a partnery. Mou doménou je identifikace skrytého potenciálu, zejména na dynamických trzích, kde přetvářím prvotní kontakt v pevné a udržitelné obchodní vztahy."
+        },
+        {
+          "title": "Konzultativní prodej a tvorba řešení na míru",
+          "description": "Věřím, že nejlepší řešení se rodí z naslouchání, ne jen z prezentování. Můj přístup je nejprve důkladně porozumět specifickým potřebám a technickým výzvám klienta. Na základě této analýzy navrhuji řešení na míru, které je plně v souladu s jeho cíli."
+        },
+        {
+          "title": "Projektové řízení s technickým přesahem",
+          "description": "Skvělý nápad získá hodnotu až ve chvíli, kdy je úspěšně realizován. Řídím projekty od prvotního konceptu až po finální spuštění a zajišťuji, aby byla obchodní vize přesně přeložena do funkčního technického řešení. Tento web a avatar, se kterým interagujete, jsou toho praktickou ukázkou."
+        }
+      ]
+    },
+    "dovednosti": {
+      "title": "Nástroje",
+      "tools": [
+        {
+          "title": "Python & AI",
+          "description": "S příchodem umělé inteligence mám pocit, že se vize, které jsem znal ze sci-fi, stávají skutečností. To mne přivedlo k nástrojům jako Python a Cursor a k silné chuti pochopit nejen základy, ale celý ekosystém, co zatím existuje. Mým cílem přitom není stát se programátorem, ale mít hluboký vhled, který je v byznysu klíčový. Navíc mi to otevírá možnosti vést smysluplnou debatu a chápat limity a možnosti AI."
+        },
+        {
+          "title": "Premiere Pro & Video",
+          "description": "Lidé dnes méně a méně čtou a tak je video silný nástroj jazyků marketingu a obchodu. Video dnes může odpovědět na mnoho otázek tisícům zákazníků najednou. Moje zkušenost s Premiere Pro mi dává možnosti i vhled do toho, co obnáší tvorba vizuálně poutavého obsahu. Díky tomu dokážu lépe spolupracovat s marketingovými týmy a chápat komplexnost a složitost videí."
+        },
+        {
+          "title": "Photoshop & Grafika",
+          "description": "Každá úspěšná firma má silnou vizuální identitu. Znalost základů Photoshopu mi dává prostředky pro tvorbu obsahu nebo poutavé prezentace. Tato schopnost i základy programu pro mě znamená schopnost vést informovanou debatu s designéry a marketéry. Rozumět jejich řeči."
+        },
+        {
+          "title": "Angličtina",
+          "description": "Angličtina je mým přirozeným pracovním jazykem. Na denní bázi ji využívám pro komunikaci se zahraničními klienty, vedení obchodních jednání a přesnou identifikaci jejich potřeb napříč různými trhy."
+        }
+      ],
+      "icons": ["World", "Adobe", "Email", "Google", "Excel", "PowerPoint", "Teams"]
+    },
+    "kariera": {
+      "title": "Kariéra",
+      "position_label": "Pozice",
+      "description_label": "Popis práce",
+      "period_label": "Působení",
+      "items": [
+        {
+          "company": "OneCircle",
+          "position": "Account Manager pro Východní Evropu",
+          "description": "Zodpovědnost za trh Východní Evropy. Moje role zahrnovala akvizici nových zákazníků, technickou podporu stávajících partnerů, reporting a vyhledávání strategických příležitostí pro růst.",
+          "period": "2024 - 2025"
+        },
+        {
+          "company": "Novum Global, a.s.",
+          "position": "Account Manager & Project Designer",
+          "description": "Specializace na poradenství a návrh řešení v oblasti průmyslového vážení. Zodpovídal jsem za rozvoj prodeje mobilních vážicích systémů RAVAS, včetně technických návrhů a integrace s ERP/CRM systémy zákazníků.",
+          "period": "2018 - 2023"
+        },
+        {
+          "company": "Aira GROUP",
+          "position": "Account Manager",
+          "description": "Má role spočívala v konzultacích s klienty a hledání strategických příležitostí pro jejich růst, ať už skrze online marketing, budování značky, nebo vývoj softwaru na míru (ERP/CRM). Zajišťoval jsem také kompletní koordinaci projektových týmů.",
+          "period": "2017 - 2018"
+        }
+      ]
+    },
+    "o_mne": {
+      "title": "O mně",
+      "story_title": "Můj příběh: Spojení světů technologií a obchodu",
+      "paragraphs": [
+        "Moje profesní cesta je spojením dvou světů: technologie a obchodu. Začala u fascinace sci-fi a u stavění vlastních počítačů. Vždy pro mě bylo klíčové rozumět systémům do hloubky – ne proto, abych se stal expertem, ale abych dokázal vytvořit nástroj, který mi bude dokonale sloužit.",
+        "Tato vášeň mě paradoxně nevedla k programování, ale k obchodu. S více než deseti lety praxe ve vedení komplexních B2B projektů jsem si na vlastní kůži zažil, jak se pravidla hry změnila. Dnes už nestačí mít skvělý produkt; v době, kdy mají klienti neomezený přístup k informacím, se role obchodníka posunula z prezentátora na detektiva. Mým úkolem je naslouchat, odhalovat skryté potřeby a nacházet řešení, která skutečně fungují."
+      ],
+      "bridge_title": "Most mezi byznysem a technologií",
+      "bridge_intro": "Věřím, že skutečná hodnota dnes vzniká na pomezí různých oborů. Proto se snažím aktivně získávat vhled i do oblastí, které tradičně do portfolia Account Managera nepatří:",
+      "bridge_items": [
+        "Získávám vhled do jazyka AI a kódu. S nástroji jako Cursor se nesnažím dostat jen pod pokličku technologie, ale pochopit komplexní svět AI. Nejlepším způsobem je se AI věnovat a tvořit, ne s cílem stát se programátorem, ale jako obchodník mít hlubokou technickou znalost na základě které mohu optimalizovat řešení mezi vývojem a zákazníkem.",
+        "Mám přehled o marketingu a designu. Díky několikaletému působení v marketingových společnostech a praktické zkušenosti s nástroji jako Premiere Pro, Photoshop a Google mám komplexní představu a povědomí o PPC, SEO a dalších klíčových faktorech. Dle mého nestačí být jen obchodník s telefonem, ale i webem."
+      ],
+      "vision_title": "Moje vize: AI jako zesilovač lidského potenciálu",
+      "vision_paragraphs": [
+        "Když na scénu vstoupila umělá inteligence, všechny dílky mé skládačky do sebe dokonale zapadly. Propojila se má vášeň pro funkční systémy s hlubokým porozuměním obchodu. V AI nevidím náhradu člověka, ale jeho nejlepšího asistenta. Je to nástroj, který má sílu odbourat repetitivní zátěž – práci s daty, reporting, rutinní úkoly – a uvolnit nám tak ruce pro to, v čem jsme nenahraditelní: pro kreativitu, strategické myšlení a budování pevných vztahů se zákazníky.",
+        "Mým cílem je vést projekty, které pomocí chytré a strategické integrace technologií generují firmám měřitelný zisk. Chci stavět systémy, které lidem skutečně pomáhají a umožňují jim soustředit se na jádro jejich práce."
+      ]
+    },
+    "kontakt": {
+      "title": "Spojme se",
+      "subtitle": "Máte zájem o spolupráci nebo se chcete jen pobavit o tom, jak mohou technologie posunout váš byznys?",
+      "linkedin": "LinkedIn Profil",
+      "contact_info": "067bok@gmail.com | 776 629 221"
+    },
+    "footer": {
+      "copyright": "© 2026 Bořek Kulhánek. Vytvořeno ve spolupráci s CLIO 3.3."
+    }
+  },
+  "en": {
+    "meta": {
+      "title": "Bořek Kulhánek - Account Manager s přesahem do AI",
+      "lang": "en"
+    },
+    "seo": {
+      "title": "Borek Kulhanek | Account Manager & AI Enthusiast",
+      "description": "Experienced B2B Account Manager bridging sales with practical AI applications. Explore projects that solve real-world business challenges.",
+      "keywords": "Account Manager, B2B, AI, sales, consultative selling",
+      "person_job_title": "Account Manager",
+      "person_email": "067bok@gmail.com",
+      "person_phone": "+420776629221",
+      "person_linkedin": "https://www.linkedin.com/in/borekkuhanek/"
+    },
+    "nav": {
+      "brand": "Bořek Kulhánek",
+      "specializace": "Expertise",
+      "dovednosti": "Tools",
+      "kariera": "Career",
+      "o_mne": "About",
+      "kontakt": "Contact",
+      "cz_label": "Česky",
+      "en_label": "English"
+    },
+    "hero": {
+      "title": "B2B Partner in the AI Era",
+      "paragraph": "I draw on 20 years of experience in complex sales using cutting-edge tools. I believe technology is rapidly transforming business today, and the key to success is to fully master it to multiply efficiency. Modern tools are not here to replace the salesperson, but to enhance their capabilities and ensure growth in a world where commerce is evolving dramatically and fast.",
+      "cta": "Learn more"
+    },
+    "downloads": {
+      "cv_cz": "Download CV (CZ)",
+      "cv_en": "Download CV (EN)"
+    },
+    "specializace": {
+      "title": "Expertise",
+      "items": [
+        {
+          "title": "Strategic B2B Account Management",
+          "description": "My goal is not just to manage contacts, but to build real and lasting partnerships. I dive deep into the client's business to understand their challenges and goals. This allows me to act as a strategic advisor, helping them find new paths."
+        },
+        {
+          "title": "Business Development & Acquisition",
+          "description": "I actively seek, approach, and build relationships with new clients and partners. My domain is identifying hidden potential, especially in dynamic markets, where I turn initial contact into solid and sustainable business relationships."
+        },
+        {
+          "title": "Consultative Sales & Custom Solutions",
+          "description": "I believe the best solutions come from listening, not just presenting. My approach is to first thoroughly understand the client's specific needs and technical challenges. Based on this analysis, I propose tailored solutions that align with their goals."
+        },
+        {
+          "title": "Project Management with Technical Reach",
+          "description": "A great idea gains value only when it is successfully implemented. I manage projects from initial concept to final launch and ensure that the business vision is accurately translated into a functional technical solution. This website and the avatar you interact with are a practical demonstration."
+        }
+      ]
+    },
+    "dovednosti": {
+      "title": "Tools",
+      "tools": [
+        {
+          "title": "Python & AI",
+          "description": "With the advent of artificial intelligence, I feel the visions I knew from sci-fi are becoming reality. This led me to tools like Python and Cursor and a strong desire to understand not just the basics, but the entire ecosystem that exists so far. My goal is not to become a programmer, but to have deep insight that is key in business. It also opens up opportunities for me to have meaningful discussions and understand the limits and possibilities of AI."
+        },
+        {
+          "title": "Premiere Pro & Video",
+          "description": "People read less and less today, so video is a powerful language of marketing and business. Video can now answer many questions for thousands of customers at once. My experience with Premiere Pro gives me the ability and insight into what it takes to create visually compelling content. This allows me to collaborate better with marketing teams and understand the complexity of videos."
+        },
+        {
+          "title": "Photoshop & Graphics",
+          "description": "Every successful company has a strong visual identity. Knowledge of Photoshop basics gives me the means to create content or compelling presentations. This skill and program fundamentals mean I can have informed discussions with designers and marketers. Speak their language."
+        },
+        {
+          "title": "English",
+          "description": "English is my natural working language. I use it daily for communication with international clients, conducting business negotiations, and accurately identifying their needs across different markets."
+        }
+      ],
+      "icons": ["World", "Adobe", "Email", "Google", "Excel", "PowerPoint", "Teams"]
+    },
+    "kariera": {
+      "title": "Career",
+      "position_label": "Position",
+      "description_label": "Description",
+      "period_label": "Period",
+      "items": [
+        {
+          "company": "OneCircle",
+          "position": "Account Manager for Eastern Europe",
+          "description": "Responsibility for the Eastern European market. My role included acquiring new customers, technical support for existing partners, reporting, and identifying strategic growth opportunities.",
+          "period": "2024 - 2025"
+        },
+        {
+          "company": "Novum Global, a.s.",
+          "position": "Account Manager & Project Designer",
+          "description": "Specialization in consulting and solution design in industrial weighing. I was responsible for developing sales of RAVAS mobile weighing systems, including technical designs and integration with customer ERP/CRM systems.",
+          "period": "2018 - 2023"
+        },
+        {
+          "company": "Aira GROUP",
+          "position": "Account Manager",
+          "description": "My role involved consulting with clients and finding strategic opportunities for their growth, whether through online marketing, brand building, or custom software development (ERP/CRM). I also ensured complete coordination of project teams.",
+          "period": "2017 - 2018"
+        }
+      ]
+    },
+    "o_mne": {
+      "title": "About me",
+      "story_title": "My Story: Bridging Technology and Business",
+      "paragraphs": [
+        "My professional path connects two worlds: technology and business. It started with a fascination for sci-fi and building my own computers. It has always been key for me to understand systems in depth – not to become an expert, but to create a tool that serves me perfectly.",
+        "This passion paradoxically led me not to programming, but to business. With over ten years of experience leading complex B2B projects, I have personally experienced how the rules of the game have changed. Today, a great product is not enough; in an era when clients have unlimited access to information, the role of the salesperson has shifted from presenter to detective. My task is to listen, uncover hidden needs, and find solutions that truly work."
+      ],
+      "bridge_title": "Bridge Between Business and Technology",
+      "bridge_intro": "I believe real value today is created at the intersection of different fields. That's why I actively seek insight into areas that traditionally don't belong in an Account Manager's portfolio:",
+      "bridge_items": [
+        "I gain insight into AI and code. With tools like Cursor, I'm not just trying to peek under the hood of technology, but to understand the complex world of AI. The best way is to engage with AI and create – not with the goal of becoming a programmer, but as a businessperson to have deep technical knowledge that allows me to optimize solutions between development and the customer.",
+        "I have an overview of marketing and design. Thanks to several years in marketing companies and practical experience with tools like Premiere Pro, Photoshop, and Google, I have a comprehensive understanding of PPC, SEO, and other key factors. In my view, it's not enough to be just a salesperson with a phone, but also with a website."
+      ],
+      "vision_title": "My Vision: AI as an Amplifier of Human Potential",
+      "vision_paragraphs": [
+        "When artificial intelligence entered the scene, all the pieces of my puzzle fell perfectly into place. My passion for functional systems connected with a deep understanding of business. I don't see AI as a replacement for humans, but as their best assistant. It's a tool with the power to eliminate repetitive burden – data work, reporting, routine tasks – and free our hands for what we're irreplaceable in: creativity, strategic thinking, and building solid relationships with customers.",
+        "My goal is to lead projects that generate measurable profit for companies through smart and strategic integration of technology. I want to build systems that truly help people and allow them to focus on the core of their work."
+      ]
+    },
+    "kontakt": {
+      "title": "Let's connect",
+      "subtitle": "Interested in collaboration or just want to chat about how technology can move your business forward?",
+      "linkedin": "LinkedIn Profile",
+      "contact_info": "067bok@gmail.com | 776 629 221"
+    },
+    "footer": {
+      "copyright": "© 2026 Bořek Kulhánek. Created in collaboration with CLIO 3.3."
+    }
+  }
+}
